@@ -81,6 +81,25 @@
     z-index: 1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+    .event-row:nth-child(even) {
+        justify-content: flex-start;
+    }
+    
+    .event-row:nth-child(even)::after {
+        position: relative;
+        margin-top: calc(var(--event-margin) * 3);;
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-left: 20px solid var(--event-color);
+        border-bottom: 10px solid transparent;
+        margin-left: calc(var(--event-margin) * -1);
+    }
+
+    .event-row:nth-child(even)::before {
+        display: none;
+    }
 
 }
