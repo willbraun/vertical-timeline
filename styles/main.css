@@ -24,7 +24,6 @@
     justify-content: flex-start;
     position: relative;
     margin: 0 auto;
-    border: 2px solid black;
     width: 90%;
     height: 100%;
 }
@@ -82,6 +81,14 @@
 }
 
 @media (max-width: 650px) {
+    .event {
+        width: 80%;
+    }
+
+    .vertical-line {
+        left: 90%;
+    }
+    
     .event-row:nth-child(even) {
         justify-content: flex-start;
     }
