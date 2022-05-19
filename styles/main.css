@@ -42,7 +42,7 @@
     margin: var(--event-margin);
     border-radius: 5px;
     box-shadow: 0 10px 20px -10px #555;
-    transition: 0.5s;
+    transition: 0.7s;
 }
 
 .event > img {
@@ -73,7 +73,7 @@
     margin-bottom: 15px;
     padding: 0 20px;
     -webkit-box-orient: vertical;
-    display: block;
+    display: -webkit-box;
     -webkit-line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -93,7 +93,7 @@
 }
 
 .event:hover {
-    box-shadow: 0 0 30px 10px blue;
+    box-shadow: 0 0 10px 5px #00f;
 }
 
 button {
@@ -183,7 +183,7 @@ button:active {
     filter: invert();
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
     .event {
         width: 75%;
     }

@@ -37,6 +37,7 @@ const loadInitial = function() {
 
 $eventRows = document.querySelectorAll('.event-row');
 $events = document.querySelectorAll('.event');
+$icons = document.querySelectorAll('.icon');
 $events.forEach(event => event.querySelector('button').addEventListener('click', function() {event.classList.toggle('expand')}));
 
 loadInitial();
