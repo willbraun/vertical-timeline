@@ -1,40 +1,45 @@
-$events = document.querySelectorAll('.event');
-$events.forEach(event => event.querySelector('button').addEventListener('click', function() {event.classList.toggle('expand')}));
-
-checkForNew();
-window.addEventListener('scroll', function(e) {
-    checkForNew();
-});
-
-
-// helpers
 const getElementX = function(element) {
     return element.getBoundingClientRect().left;
 }
 
-const getElementY = function(element) {
+const getElementTop = function(element) {
     return element.getBoundingClientRect().top;
 }
 
-const checkForNew = function () {
-    $events.forEach(event => {
-        console.log(event.classList.contains('event'));
-        if (event.classList.contains('slide-left') || event.classList.contains('slide-right')) return;
+const getElementBottom = function(element) {
+    return element.getBoundingClientRect().bottom;
+}
+
+const checkIfOnPage = function(element) {
+    return (getElementBottom(element) > 0 && getElementTop(element) < window.innerHeight);
+}
+
+const checkForNewRow = function() {
+    $eventRows.forEach(eventRow => {
+        if (eventRow.classList.contains('slide-left') || eventRow.classList.contains('slide-right') || eventRow.classList.contains('initial')) return;
         
-        console.log(getElementY(event));
-        console.log(window.innerHeight);
-        if (getElementY(event) < window.innerHeight) {
-            if (getElementX(event) < window.innerWidth * 0.5) {
-                event.classList.add('slide-left');
+        if (checkIfOnPage(eventRow.querySelector('.event'))) {
+            if (getElementX(eventRow.querySelector('.event')) < window.innerWidth * 0.5) {
+                eventRow.classList.add('slide-right');
             }
             else {
-                event.classList.add('slide-right');
+                eventRow.classList.add('slide-left');
             }
         }
     });
 }
 
+const loadInitial = function() {
+    $eventRows.forEach(eventRow => {
+        checkIfOnPage(eventRow) ? eventRow.classList.add('initial') : null;
+    })
+}
 
-// window.innerHeight
-// if y position of element is greater than the viewport height, add class for animation. if less than, remove
+$eventRows = document.querySelectorAll('.event-row');
+$events = document.querySelectorAll('.event');
+$events.forEach(event => event.querySelector('button').addEventListener('click', function() {event.classList.toggle('expand')}));
 
+loadInitial();
+window.addEventListener('scroll', function() {
+    checkForNewRow();
+});

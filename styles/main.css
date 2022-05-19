@@ -32,7 +32,6 @@
 
 .event-row {
     display: flex;
-    transition: 1s;
 }
 
 .event {
@@ -43,7 +42,7 @@
     margin: var(--event-margin);
     border-radius: 5px;
     box-shadow: 0 10px 20px -10px #555;
-    transition: 0.6s;
+    transition: 0.5s;
 }
 
 .event > img {
@@ -213,4 +212,36 @@ button:active {
         display: none;
     }
 
+}
+
+.slide-left {
+    animation: slide-left 1s;
+}
+
+.event-row > .slide-left::before {
+    animation: slide-left 1s;
+}
+
+.slide-right {
+    animation: slide-right 1s;
+}
+
+
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
